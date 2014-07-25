@@ -1,0 +1,15 @@
+doctype 5
+html
+  head
+    title Artie the ArtBot
+    link(rel='stylesheet', href='/styles.css')
+  body
+    h2 Artie the ArtBot
+
+    canvas(id="move", width="500", height="300")
+    canvas(id="draw", width="500", height="300")
+
+    script(src="/socket.io/socket.io.js")
+    script(src="/ender.min.js")
+    script(src="/vektor.js")
+    script(src="/artbot.js")

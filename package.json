@@ -1,0 +1,33 @@
+{
+  "name": "artbot",
+  "version": "0.0.2",
+  "description": "it makes art, silly!",
+  "main": "app.js",
+  "scripts": {
+    "test": "lab -vC"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rockbot/artbot"
+  },
+  "keywords": [
+    "robot",
+    "art",
+    "nodebot"
+  ],
+  "author": "Raquel Vélez <raquel@rckbt.me>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rockbot/artbot/issues"
+  },
+  "homepage": "https://github.com/rockbot/artbot",
+  "dependencies": {
+    "express": "3.3.4",
+    "jade": "0.34.1",
+    "johnny-five": "^0.7.56",
+    "socket.io": "^1.0.0",
+    "stylus": "0.36.1",
+    "underscore": "1.5.1",
+    "vektor": "0.1.0"
+  }
+}

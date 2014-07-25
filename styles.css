@@ -1,0 +1,21 @@
+body {
+  padding: 2em;
+}
+
+canvas {
+  outline: 1px solid black;
+}
+
+#move {
+  /*outline: 5px solid red;*/
+  position: absolute;
+  top: 7em;
+  left: 3em;
+}
+
+#draw {
+  /*outline: 3px solid blue;*/
+  position: absolute;
+  top: 7em;
+  left: 3em;
+}
