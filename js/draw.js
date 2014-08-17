@@ -8,7 +8,7 @@ var random = new Random();
 var CANVAS_HEIGHT = 300,
     CANVAS_WIDTH = 500;
 
-// var socket = io.connect('http://localhost');
+var socket = io.connect('http://localhost');
 
 var move = document.getElementById("move"),
     draw = document.getElementById("draw"),
@@ -16,7 +16,8 @@ var move = document.getElementById("move"),
     dw = draw.getContext("2d"),
     curr = { x: 250, y: 150, z: 0},
     theta = 0,
-    isDrawing = false;
+    isDrawing = false,
+    autoDraw;
 
 drawBot(curr);
 
@@ -52,9 +53,15 @@ function translatePoint (d, alpha) {
 }
 
 function clear () {
-  dw.clearRect(0, 0, 500, 300);
+  if (autoDraw) {
+    clearInterval(autoDraw);
+    autoDraw = null;
+  } else {
+    dw.clearRect(0, 0, 500, 300);
+  }
+
   moveBot(0, 0);
-  // socket.emit('move', { direction: 'stop' });
+  socket.emit('move', { direction: 'stop' });
 }
 
 window.onkeypress = function (e) {
@@ -72,25 +79,25 @@ window.onkeypress = function (e) {
 function fwd (steps) {
   console.log('forward!')
   moveBot(steps || 10, 0);
-  // socket.emit('move', { direction: 'fwd' });
+  socket.emit('move', { direction: 'fwd' });
 }
 
 function bkwd (steps) {
   console.log('backward!')
   moveBot(-steps || -10, 0);
-  // socket.emit('move', { direction: 'bkwd' });
+  socket.emit('move', { direction: 'bkwd' });
 }
 
 function left () {
   console.log('left!')
   moveBot(0, Math.PI/2);
-  // socket.emit('move', { direction: 'left' });
+  socket.emit('move', { direction: 'left' });
 }
 
 function right () {
   console.log('right!')
   moveBot(0, -Math.PI/2);
-  // socket.emit('move', { direction: 'right' });
+  socket.emit('move', { direction: 'right' });
 }
 
 function go () {
@@ -103,12 +110,18 @@ function go () {
       Y_MIN = WKSP_BORDER,
       Y_MAX = CANVAS_HEIGHT - WKSP_BORDER;
 
-  // pick a drawing option
-  if (random.bool()) toggleDraw();
+  if (!autoDraw) { // protect against accidentally hitting > 1x
+    autoDraw = setInterval(drawRandom, 1000);
+  }
 
-  // pick a random direction 
-  var direction = random.pick([fwd, fwd, left, right, bkwd, bkwd]);
-  direction(20);
+  function drawRandom () {
+    // pick a drawing option
+    if (random.bool()) toggleDraw();
+
+    // pick a random direction 
+    var direction = random.pick([fwd, fwd, left, right, bkwd]);
+    direction(20);
+  }
 
 }
 
@@ -116,7 +129,7 @@ function toggleDraw () {
   isDrawing = !isDrawing;
   console.log('draw: ', isDrawing);
   moveBot(0, 0);
-  // socket.emit('draw', isDrawing);
+  socket.emit('draw', isDrawing);
 }
 
 function drawBatbot () {
