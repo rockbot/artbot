@@ -121,16 +121,15 @@ function toggleDraw () {
 
 function drawBatbot () {
   var portrait = theta / 90 % 2
-  var width = 82;
+  var width = 95;
   var height = 50;
-  var x = curr.x + width / 2;
-  var y = curr.y + height / 2;
+  var x = curr.x;
+  var y = curr.y;
   var bb = document.getElementById('bb');
 
   mv.translate(x, y);
   mv.rotate(theta - Math.PI);
-  mv.drawImage(bb, 0, 0);
-  // mv.drawImage(bb, -width / 2, -height / 2, width, height);
+  mv.drawImage(bb, -width / 2, -height / 2, width, height);
   mv.rotate(-theta + Math.PI);
   mv.translate(-x, -y);
 }
