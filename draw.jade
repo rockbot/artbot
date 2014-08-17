@@ -1,0 +1,18 @@
+doctype 5
+html
+  head
+    title Canvas Drawing
+    link(rel='stylesheet', href='/styles.css')
+  body
+    h2 Canvas Drawing
+
+    img(id="bb", src="/batbot_tiny.png")
+
+    canvas(id="move", width="500", height="300")
+    canvas(id="draw", width="500", height="300")
+
+    script(src="/socket.io/socket.io.js")
+    script(src="/ender.min.js")
+    script(src="/vektor.js")
+    script(src="/random.min.js")
+    script(src="/draw.js")

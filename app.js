@@ -28,5 +28,8 @@ app.get('/artbot', function (req, res) {
   res.render('artbot');
 });
 
+app.get('/draw', function (req, res) {
+  res.render('draw');
+});
 
 server.listen(3000);
