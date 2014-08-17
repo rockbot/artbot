@@ -20,16 +20,25 @@ app.configure('development', function(){
 });
 
 app.get('/', function (req, res) {
-  res.render('canvas')
+  res.render('artbot', { 
+    title: 'Canvas Drawing',
+    script: 'canvas'
+  });
 });
 
-app.get('/artbot', function (req, res) {
+app.get('/move', function (req, res) {
   var artbot = require('./artbot')(io);
-  res.render('artbot');
+  res.render('artbot', { 
+    title: 'Artie the ArtBot',
+    script: 'move'
+  });
 });
 
 app.get('/draw', function (req, res) {
-  res.render('draw');
+  res.render('artbot', { 
+    title: 'Mega Demo!!',
+    script: 'draw' 
+  });
 });
 
 server.listen(3000);
