@@ -6,6 +6,10 @@ canvas {
   outline: 1px solid black;
 }
 
+img {
+  display: none;
+}
+
 #move {
   /*outline: 5px solid red;*/
   position: absolute;
