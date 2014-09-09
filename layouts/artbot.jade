@@ -9,10 +9,16 @@ html
     img#bb(src="/batbot_tiny.png")
     img#draw-icon(src="/pencil.png")
 
-    canvas(id="draw", width="500", height="300")
-    canvas(id="move", width="500", height="300")
+    canvas(id="draw", width="400", height="400")
+    canvas(id="move", width="400", height="400")
 
     video(id="webcam", width="400", height="350")
+
+    .nav
+      if prev
+        a(href=prev) Previous
+      if next
+        a(href=next) Next
 
     script(src="/socket.io/socket.io.js")
     script(src="/js/ender.min.js")

@@ -6,6 +6,8 @@ var app = express(),
     server = http.createServer(app),
     io = require('socket.io')(server);
 
+// var Artbot = require('./artbot')(io);
+
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
   app.set('views', path.join(__dirname, '/layouts'));
@@ -20,24 +22,26 @@ app.configure('development', function(){
 });
 
 app.get('/', function (req, res) {
-  res.render('artbot', { 
+  res.render('artbot', {
     title: 'Canvas Drawing',
-    script: 'canvas'
+    script: 'canvas',
+    next: '/move'
   });
 });
 
 app.get('/move', function (req, res) {
-  var artbot = require('./artbot')(io);
-  res.render('artbot', { 
+  res.render('artbot', {
     title: 'Artie the ArtBot',
-    script: 'move'
+    script: 'move',
+    next: '/draw'
   });
 });
 
 app.get('/draw', function (req, res) {
-  res.render('artbot', { 
+  res.render('artbot', {
     title: 'Mega Demo!!',
-    script: 'draw' 
+    script: 'draw',
+    prev: '/move'
   });
 });
 

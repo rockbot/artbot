@@ -36,6 +36,17 @@ canvas {
   right: 3em;
 }
 
+.nav {
+  margin-top: 28em;
+  margin-left: 23em;
+}
+
+a {
+  outline: 2px solid red;
+  padding: 5px;
+  text-decoration: none;
+}
+
 #draw-icon {
   height: 50px;
   position: absolute;
