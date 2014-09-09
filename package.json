@@ -23,7 +23,9 @@
   },
   "homepage": "https://github.com/rockbot/artbot",
   "dependencies": {
+    "attachmediastream": "^1.0.1",
     "express": "3.3.4",
+    "getusermedia": "^1.0.0",
     "jade": "0.34.1",
     "johnny-five": "^0.8.0",
     "random-js": "^1.0.4",
