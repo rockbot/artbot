@@ -12,17 +12,18 @@ html
     canvas(id="draw", width="400", height="400")
     canvas(id="move", width="400", height="400")
 
-    video(id="webcam", width="400", height="350")
+    if (robot)
+        video(id="webcam", width="400", height="350")
 
     .nav
       if prev
-        a(href=prev) Previous
+        a(href=prev) Prev
       if next
         a(href=next) Next
 
     script(src="/socket.io/socket.io.js")
-    script(src="/js/ender.min.js")
     script(src="/js/vektor.js")
     script(src="/js/random.min.js")
     script(src="/js/draw.js")
-    script(src="/js/video.bundle.js")
+    if (robot)
+        script(src="/js/video.bundle.js")

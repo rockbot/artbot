@@ -5,10 +5,15 @@ var vektor = require('vektor'),
 
 var random = new Random();
 
-var CANVAS_HEIGHT = 300,
-    CANVAS_WIDTH = 500;
+var CANVAS_HEIGHT = 400,
+    CANVAS_WIDTH = 400;
 
-var socket = io.connect('http://localhost');
+var socket = {
+  emit: function () {}
+};
+
+if (document.getElementsByTagName('video').length)
+  socket = io.connect('http://localhost');
 
 var move = document.getElementById("move"),
     draw = document.getElementById("draw"),
@@ -20,7 +25,7 @@ var move = document.getElementById("move"),
     isDrawing = false,
     autoDraw;
 
-icon.style.display = 'none'; 
+icon.style.display = 'none';
 drawBot(curr);
 
 function drawBot (pt) {
@@ -59,7 +64,7 @@ function clear () {
     clearInterval(autoDraw);
     autoDraw = null;
   } else {
-    dw.clearRect(0, 0, 500, 300);
+    dw.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
   }
 
   moveBot(0, 0);
@@ -120,7 +125,7 @@ function go () {
     // pick a drawing option
     if (random.bool()) toggleDraw();
 
-    // pick a random direction 
+    // pick a random direction
     var direction = random.pick([fwd, fwd, left, right, bkwd]);
     direction(20);
   }
