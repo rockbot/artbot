@@ -1,25 +1,39 @@
+h2 {
+  padding: 0;
+  margin: 0;
+  font-family: Helvetica;
+  color: rgb(88,83,95);
+}
+
 body {
-  padding: 2em;
+  padding: 1em 0 0 2em;
 }
 
 canvas {
   outline: 1px solid black;
 }
 
-img {
+#bb {
   display: none;
 }
 
 #move {
   /*outline: 5px solid red;*/
   position: absolute;
-  top: 7em;
+  top: 5em;
   left: 3em;
 }
 
 #draw {
   /*outline: 3px solid blue;*/
   position: absolute;
-  top: 7em;
+  top: 5em;
   left: 3em;
+}
+
+#draw-icon {
+  height: 50px;
+  position: absolute;
+  top: 1em;
+  left: 24em;
 }

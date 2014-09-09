@@ -3,8 +3,8 @@ var vektor = require('vektor'),
     r = require('vektor').rotate,
     h = require('vektor').homog;
 
-var CANVAS_HEIGHT = 300,
-    CANVAS_WIDTH = 500;
+var CANVAS_HEIGHT = 400,
+    CANVAS_WIDTH = 400;
 
 var socket = io.connect('http://localhost');
 
@@ -12,7 +12,7 @@ var move = document.getElementById("move"),
     draw = document.getElementById("draw"),
     mv = move.getContext("2d"),
     dw = draw.getContext("2d"),
-    curr = { x: 10, y: 10, z: 0},
+    curr = { x: 0, y: 0, z: 0},
     theta = 0,
     isDrawing = false;
 
@@ -50,7 +50,7 @@ function translatePoint (d, alpha) {
 }
 
 function clear () {
-  dw.clearRect(0, 0, 500, 300);
+  dw.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
   moveBot(0, 0);
   socket.emit('move', { direction: 'stop' });
 }
@@ -110,7 +110,7 @@ function getMousePosition (ev) {
 }
 
 // var pts;
- 
+
 // window.onmousedown = function (ev) {
 //   moveBot(getMousePosition(ev));
 //   isDrawing = true;
@@ -140,8 +140,6 @@ function drawBatbot () {
 
   mv.translate(x, y);
   mv.rotate(theta - Math.PI);
-  // mv.drawImage(bb, 0, 0);
-  // mv.drawImage(bb, -width / 2, -height / 2, width, height);
   mv.rotate(-theta + Math.PI);
   mv.translate(-x, -y);
 }

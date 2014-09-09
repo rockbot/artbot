@@ -51,7 +51,7 @@ module.exports = function ArtBot (io) {
   board.on('ready', function () {
 
     var led = new five.Led(13);
-    led.strobe(2000);
+    led.off();
 
     lServo = new five.Servo({
       pin: 11,
@@ -78,14 +78,16 @@ module.exports = function ArtBot (io) {
     io.on('connection', function (socket) {
       socket.on('move', function (data) {
         // console.log(data.direction)
-        moves[data.direction](700);
+        moves[data.direction](600);
       });
 
       socket.on('draw', function (drawOn) {
         // console.log('draw? ', drawOn);
         if (drawOn) {
+          led.on();
           marker.min();
         } else {
+          led.off();
           marker.to(30);
         }
       })
