@@ -24,7 +24,6 @@ app.configure('development', function(){
 app.get('/', function (req, res) {
   res.render('artbot', {
     title: 'Canvas Drawing',
-    script: 'canvas',
     next: '/move'
   });
 });
@@ -32,16 +31,7 @@ app.get('/', function (req, res) {
 app.get('/move', function (req, res) {
   res.render('artbot', {
     title: 'Artie the ArtBot',
-    script: 'move',
     next: '/draw'
-  });
-});
-
-app.get('/draw', function (req, res) {
-  res.render('artbot', {
-    title: 'Mega Demo!!',
-    script: 'draw',
-    prev: '/move'
   });
 });
 

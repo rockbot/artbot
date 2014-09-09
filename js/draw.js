@@ -12,6 +12,7 @@ var socket = io.connect('http://localhost');
 
 var move = document.getElementById("move"),
     draw = document.getElementById("draw"),
+    icon = document.getElementById("draw-icon"),
     mv = move.getContext("2d"),
     dw = draw.getContext("2d"),
     curr = { x: 250, y: 150, z: 0},
@@ -19,6 +20,7 @@ var move = document.getElementById("move"),
     isDrawing = false,
     autoDraw;
 
+icon.style.display = 'none'; 
 drawBot(curr);
 
 function drawBot (pt) {
@@ -111,7 +113,7 @@ function go () {
       Y_MAX = CANVAS_HEIGHT - WKSP_BORDER;
 
   if (!autoDraw) { // protect against accidentally hitting > 1x
-    autoDraw = setInterval(drawRandom, 1000);
+    autoDraw = setInterval(drawRandom, 750);
   }
 
   function drawRandom () {
@@ -126,6 +128,7 @@ function go () {
 }
 
 function toggleDraw () {
+  icon.style.display = (icon.style.display == 'none') ? 'block' : 'none';
   isDrawing = !isDrawing;
   console.log('draw: ', isDrawing);
   moveBot(0, 0);
